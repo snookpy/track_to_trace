@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:track_to_trace/counter.dart';
+
+final counter = Counter(); // Instantiate the store
 
 void main() => runApp(MyApp());
 
@@ -46,15 +50,17 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            Observer(
+              builder: (_) => Text(
+                '${counter.value}',
+                style: Theme.of(context).textTheme.display1,
+              ),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: counter.increment,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
