@@ -6,8 +6,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController userPhoneNumber =
-      TextEditingController(text: 'initial text');
+  TextEditingController userPhoneNumber = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +19,26 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             children: <Widget>[
-              SizedBox(height: 12.0,),
-              Text(
-                'Your phone number'
+              SizedBox(
+                height: 12.0,
               ),
-              SizedBox(height: 12.0,),
-              CupertinoTextField(controller: userPhoneNumber,
-              keyboardType: TextInputType.numberWithOptions(),
-              autofocus: true
+              Text('Your phone number'),
+              SizedBox(
+                height: 12.0,
               ),
-              SizedBox(height: 18.0,),
+              CupertinoTextField(
+                  controller: userPhoneNumber,
+                  keyboardType: TextInputType.numberWithOptions(),
+                  // autofocus: true
+                  ),
+              SizedBox(
+                height: 18.0,
+              ),
               CupertinoButton(
                 child: Text("Next"),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/main');
+                },
               )
             ],
           ),
