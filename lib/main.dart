@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:track_to_trace/pages/login_page.dart';
-import 'package:track_to_trace/pages/package_detail.dart';
+import 'package:track_to_trace/pages/product.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,15 +43,13 @@ class CupertinoStoreHomePage extends StatelessWidget {
         switch (index) {
           case 0:
             return CupertinoTabView(builder: (context) {
-              return Test(
-                title: "Main R",
+              return ProductList(
               );
             });
           case 1:
             return CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
-                child: Test(
-                  title: "History R",
+                child: ProductList(
                 ),
               );
             });
@@ -67,24 +65,26 @@ class CupertinoStoreHomePage extends StatelessWidget {
   }
 }
 
-class Test extends StatelessWidget {
-  final String title;
+class ProductList extends StatelessWidget {
 
-  const Test({Key key, this.title}) : super(key: key);
+  const ProductList({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: const Text('Shipped Pack'),
+      ),
       child: SafeArea(
-        child: CupertinoButton(
-          child: Text("Next $title"),
-          onPressed: () {
-            // Navigator.popAndPushNamed(context, "detail");
-            Navigator.push(
-                context,
-                CupertinoPageRoute(
-                    builder: (_) => PackageDetail(title: title)));
-          },
+        child: CupertinoScrollbar(
+                  child: ListView(
+            children: <Widget>[
+              ProductRowItem(),
+              ProductRowItem(),
+              ProductRowItem(),
+              ProductRowItem(),
+            ],
+          ),
         ),
       ),
     );
