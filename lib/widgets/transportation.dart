@@ -13,8 +13,22 @@ class Transportation extends StatelessWidget {
         height: MediaQuery.of(context).size.height / 2,
         child: CupertinoScrollbar(
           child: ListView(
-            // padding: const EdgeInsets.all(0),
+            padding: const EdgeInsets.all(0),
             children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  CupertinoButton(
+                    child: Icon(
+                      CupertinoIcons.clear,
+                      color: Colors.grey,
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              ),
               RowLogisticDetail(
                 place: "Muang, Chiangmai",
                 placeDate: "04-01-2020",

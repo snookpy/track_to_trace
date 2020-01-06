@@ -68,7 +68,7 @@ class ProductRowItem extends StatelessWidget {
           CupertinoButton(
             padding: EdgeInsets.zero,
             child: const Icon(
-              CupertinoIcons.time,
+              CupertinoIcons.location,
               semanticLabel: 'Detail',
             ),
             onPressed: () {
@@ -100,5 +100,3 @@ class ProductRowItem extends StatelessWidget {
     );
   }
 }
-
-

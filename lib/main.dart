@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:track_to_trace/pages/home_page.dart';
 import 'package:track_to_trace/pages/login_page.dart';
-import 'package:track_to_trace/pages/product.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,13 +43,13 @@ class CupertinoStoreHomePage extends StatelessWidget {
         switch (index) {
           case 0:
             return CupertinoTabView(builder: (context) {
-              return ProductList(
+              return HomePage(
               );
             });
           case 1:
             return CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
-                child: ProductList(
+                child: HomePage(
                 ),
               );
             });
@@ -61,32 +61,6 @@ class CupertinoStoreHomePage extends StatelessWidget {
             });
         }
       },
-    );
-  }
-}
-
-class ProductList extends StatelessWidget {
-
-  const ProductList({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: const Text('Shipped Pack'),
-      ),
-      child: SafeArea(
-        child: CupertinoScrollbar(
-                  child: ListView(
-            children: <Widget>[
-              ProductRowItem(),
-              ProductRowItem(),
-              ProductRowItem(),
-              ProductRowItem(),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
