@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:track_to_trace/models/product.dart';
 import 'package:track_to_trace/widgets/product.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,6 +7,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var package = new Package(
+      packageName: "Bad Bag",
+      snNumber: "sn4432202"
+    );
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: const Text('Shipped Pack'),
@@ -14,10 +19,22 @@ class HomePage extends StatelessWidget {
         child: CupertinoScrollbar(
           child: ListView(
             children: <Widget>[
-              ProductRowItem(),
-              ProductRowItem(),
-              ProductRowItem(),
-              ProductRowItem(),
+              ProductRowItem(
+                package: package,
+                lastItem: false,
+              ),
+              ProductRowItem(
+                package: package,
+                lastItem: false,
+              ),
+              ProductRowItem(
+                package: package,
+                lastItem: false,
+              ),
+              ProductRowItem(
+                package: package,
+                lastItem: true,
+              ),
             ],
           ),
         ),

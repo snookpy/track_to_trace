@@ -1,18 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:track_to_trace/models/product.dart';
 import 'package:track_to_trace/pages/styles.dart';
 import 'package:track_to_trace/widgets/transportation.dart';
 
 class ProductRowItem extends StatelessWidget {
-  // const ProductRowItem({
-  //   this.index,
-  //   this.product,
-  //   this.lastItem,
-  // });
+  final Package package;
+  final bool lastItem;
 
-  // // final Product product;
-  final int index = 0;
-  final bool lastItem = false;
+  const ProductRowItem({@required this.package, this.lastItem});
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +49,12 @@ class ProductRowItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Bad Bag",
+                    "${package.packageName}",
                     style: Styles.productRowItemName,
                   ),
                   const Padding(padding: EdgeInsets.only(top: 8)),
                   Text(
-                    '\$ 50',
+                    '${package.snNumber}',
                     style: Styles.productRowItemPrice,
                   )
                 ],
