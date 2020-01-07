@@ -11,41 +11,52 @@ class Transportation extends StatelessWidget {
     return CupertinoPopupSurface(
       child: Container(
         height: MediaQuery.of(context).size.height / 2,
-        child: CupertinoScrollbar(
-          child: ListView(
-            padding: const EdgeInsets.all(0),
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+        child: FutureBuilder(
+          future: Future.delayed(const Duration(milliseconds: 500)).then((onValue) => true),
+          builder: (context, snapshot) {
+            if(!snapshot.hasData) {
+              return Container(
+                width: MediaQuery.of(context).size.width,
+                child: CupertinoActivityIndicator(radius: 24,));
+            }
+
+            return CupertinoScrollbar(
+              child: ListView(
+                padding: const EdgeInsets.all(0),
                 children: <Widget>[
-                  CupertinoButton(
-                    child: Icon(
-                      CupertinoIcons.clear,
-                      color: Colors.grey,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  )
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      CupertinoButton(
+                        child: Icon(
+                          CupertinoIcons.clear,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      )
+                    ],
+                  ),
+                  RowLogisticDetail(
+                    place: "Muang, Chiangmai",
+                    placeDate: "04-01-2020",
+                  ),
+                  RowVerticalLine(),
+                  RowLogisticDetail(
+                    place: "Thailand",
+                    placeDate: "03-01-2020",
+                  ),
+                  RowVerticalLine(),
+                  RowLogisticDetail(
+                    place: "China",
+                    placeDate: "01-01-2020",
+                  ),
+                  RowVerticalLine(),
                 ],
               ),
-              RowLogisticDetail(
-                place: "Muang, Chiangmai",
-                placeDate: "04-01-2020",
-              ),
-              RowVerticalLine(),
-              RowLogisticDetail(
-                place: "Thailand",
-                placeDate: "03-01-2020",
-              ),
-              RowVerticalLine(),
-              RowLogisticDetail(
-                place: "China",
-                placeDate: "01-01-2020",
-              ),
-              RowVerticalLine(),
-            ],
-          ),
+            );
+          }
         ),
       ),
     );

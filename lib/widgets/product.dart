@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:track_to_trace/models/product.dart';
+import 'package:track_to_trace/models/package.dart';
 import 'package:track_to_trace/pages/styles.dart';
 import 'package:track_to_trace/widgets/transportation.dart';
 
@@ -8,7 +8,7 @@ class ProductRowItem extends StatelessWidget {
   final Package package;
   final bool lastItem;
 
-  const ProductRowItem({@required this.package, this.lastItem});
+  const ProductRowItem({@required this.package, this.lastItem = false});
 
   @override
   Widget build(BuildContext context) {
