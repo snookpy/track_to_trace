@@ -35,5 +35,5 @@ class Tracking {
         signature = json['signature'],
         status = json['status'],
         statusDate = json['status_date'],
-        statusDescription = json['status_descriptio'];
+        statusDescription = json['status_description'];
 }

@@ -10,7 +10,23 @@ class PackageModel with ChangeNotifier {
 
   Future<void> getPackages() async {
     _isFetching = true;
+    notifyListeners();
     packages = await SqliteProvider.db.getAllPackage();
     _isFetching = false;
+    notifyListeners();
+  }
+
+  Future<void> addPackage(Package newPackage) async {
+    _isFetching = true;
+    notifyListeners();
+    var id = await SqliteProvider.db.newPackage(newPackage);
+    newPackage.id = id;
+    packages.insert(0, newPackage);
+    _isFetching = false;
+    notifyListeners();
+  }
+
+  Future<void> cleanPackage() async {
+    await SqliteProvider.db.cleanPackage();
   }
 }

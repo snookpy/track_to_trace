@@ -1,11 +1,9 @@
 class Package {
   final String packageName;
   final String snNumber;
+  int id;
 
-  Package({
-    this.packageName,
-    this.snNumber,
-  });
+  Package({this.packageName, this.snNumber, this.id});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{

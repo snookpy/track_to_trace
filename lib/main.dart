@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:track_to_trace/models/package_model.dart';
+import 'package:track_to_trace/pages/create_package.dart';
 import 'package:track_to_trace/pages/home_page.dart';
 import 'package:track_to_trace/pages/login_page.dart';
 
@@ -42,19 +43,23 @@ class MyApp extends StatelessWidget {
 class CupertinoStoreHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final packageState = Provider.of<PackageModel>(context);
-    packageState.getPackages();
+    CupertinoTabController tabController = CupertinoTabController();
+
+    void goHomeTab() {
+      tabController.index = 0;
+    }
 
     return CupertinoTabScaffold(
+      controller: tabController,
       tabBar: CupertinoTabBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.news),
-            title: Text('Main'),
+            icon: Icon(CupertinoIcons.collections),
+            title: Text('Packages'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.collections),
-            title: Text('History'),
+            icon: Icon(CupertinoIcons.add_circled),
+            title: Text('Create'),
           ),
         ],
       ),
@@ -67,7 +72,7 @@ class CupertinoStoreHomePage extends StatelessWidget {
           case 1:
             return CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
-                child: HomePage(),
+                child: CreatePackage(goHomeTab: goHomeTab),
               );
             });
           default:

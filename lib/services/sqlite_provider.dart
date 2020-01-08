@@ -45,4 +45,9 @@ class SqliteProvider {
         res.isNotEmpty ? res.map((c) => Package.fromMap(c)).toList() : [];
     return list;
   }
+
+  cleanPackage() async {
+    final db = await database;
+    await db.delete("Packages");
+  }
 }
