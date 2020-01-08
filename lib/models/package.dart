@@ -14,7 +14,7 @@ class Package {
   }
 
   factory Package.fromMap(Map<String, dynamic> map) => new Package(
-        snNumber: map['snNumber'],
-        packageName: map['packageName'],
-      );
+      snNumber: map['snNumber'],
+      packageName: map['packageName'],
+      id: map['id']);
 }

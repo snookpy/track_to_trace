@@ -29,4 +29,9 @@ class PackageModel with ChangeNotifier {
   Future<void> cleanPackage() async {
     await SqliteProvider.db.cleanPackage();
   }
+
+  Future<void> removePackage(Package package) async {
+    packages.remove(package);
+    await SqliteProvider.db.deletePackage(package.id);
+  }
 }
