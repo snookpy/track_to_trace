@@ -3,6 +3,11 @@ import 'package:track_to_trace/models/package.dart';
 import 'package:track_to_trace/services/sqlite_provider.dart';
 
 class PackageModel with ChangeNotifier {
+  
+  PackageModel() {
+    this.getPackages();
+  }
+
   bool _isFetching = false;
 
   bool get isFetching => _isFetching;

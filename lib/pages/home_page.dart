@@ -50,8 +50,9 @@ class HomePage extends StatelessWidget {
                                           child: const Text("DELETE")),
                                       CupertinoButton(
                                         onPressed: () {
-                                            Navigator.of(context).pop(false);
-                                            return false;},
+                                          Navigator.of(context).pop(false);
+                                          return false;
+                                        },
                                         child: const Text("CANCEL"),
                                       ),
                                     ],

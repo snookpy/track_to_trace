@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:track_to_trace/models/package_model.dart';
+import 'package:track_to_trace/models/tracking_model.dart';
 import 'package:track_to_trace/pages/create_package.dart';
 import 'package:track_to_trace/pages/home_page.dart';
-import 'package:track_to_trace/pages/login_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,18 +24,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<PackageModel>(
-      create: (_) => PackageModel(),
-      child: CupertinoApp(onGenerateRoute: (RouteSettings settings) {
-        switch (settings.name) {
-          case '/main':
-            return CupertinoPageRoute(
-                builder: (_) => CupertinoStoreHomePage(), settings: settings);
-          default:
-            return CupertinoPageRoute(
-                builder: (_) => LoginPage(), settings: settings);
-        }
-      }),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<PackageModel>(create: (_) => PackageModel()),
+        ChangeNotifierProvider<TrackingModel>(create: (_) => TrackingModel()),
+      ],
+      child: CupertinoApp(
+        home: CupertinoStoreHomePage(),
+      ),
     );
   }
 }

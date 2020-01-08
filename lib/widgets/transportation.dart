@@ -1,64 +1,64 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:track_to_trace/models/tracking_model.dart';
 
 class Transportation extends StatelessWidget {
-  const Transportation({
-    Key key,
-  }) : super(key: key);
+  const Transportation({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final trackingState = Provider.of<TrackingModel>(context);
+    var trackings = trackingState.trackings;
     return CupertinoPopupSurface(
       child: Container(
-        height: MediaQuery.of(context).size.height / 2,
-        child: FutureBuilder(
-          future: Future.delayed(const Duration(milliseconds: 500)).then((onValue) => true),
-          builder: (context, snapshot) {
-            if(!snapshot.hasData) {
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                child: CupertinoActivityIndicator(radius: 24,));
-            }
-
-            return CupertinoScrollbar(
-              child: ListView(
-                padding: const EdgeInsets.all(0),
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+          height: MediaQuery.of(context).size.height / 2,
+          child: trackingState.isFetching
+              ? Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: CupertinoActivityIndicator(
+                    radius: 24,
+                  ))
+              : SafeArea(
+                  top: false,
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      CupertinoButton(
-                        child: Icon(
-                          CupertinoIcons.clear,
-                          color: Colors.grey,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          CupertinoButton(
+                            child: Icon(
+                              CupertinoIcons.clear,
+                              color: Colors.grey,
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          )
+                        ],
+                      ),
+                      Expanded(
+                        child: CupertinoScrollbar(
+                          child: ListView.separated(
+                            itemCount: trackings.length,
+                            padding: const EdgeInsets.all(0),
+                            itemBuilder: (BuildContext context, int index) {
+                              return RowLogisticDetail(
+                                place:
+                                    "${trackings[index].statusDescription}, ${trackings[index].location}",
+                                placeDate: trackings[index].statusDate,
+                              );
+                            },
+                            separatorBuilder:
+                                (BuildContext context, int index) =>
+                                    RowVerticalLine(),
+                          ),
                         ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      )
+                      ),
                     ],
                   ),
-                  RowLogisticDetail(
-                    place: "Muang, Chiangmai",
-                    placeDate: "04-01-2020",
-                  ),
-                  RowVerticalLine(),
-                  RowLogisticDetail(
-                    place: "Thailand",
-                    placeDate: "03-01-2020",
-                  ),
-                  RowVerticalLine(),
-                  RowLogisticDetail(
-                    place: "China",
-                    placeDate: "01-01-2020",
-                  ),
-                  RowVerticalLine(),
-                ],
-              ),
-            );
-          }
-        ),
-      ),
+                )),
     );
   }
 }

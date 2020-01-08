@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:track_to_trace/models/package.dart';
+import 'package:track_to_trace/models/tracking_model.dart';
 import 'package:track_to_trace/pages/styles.dart';
-import 'package:track_to_trace/services/thaipostapi_provider.dart';
 import 'package:track_to_trace/widgets/transportation.dart';
 
 class ProductRowItem extends StatelessWidget {
@@ -13,14 +14,12 @@ class ProductRowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final trackingState = Provider.of<TrackingModel>(context);
+    
     void showDialog() {
-      // CupertinoDialog
       showCupertinoModalPopup(
           context: context,
           builder: (_) {
-            ThaipostApiProvider t = ThaipostApiProvider();
-            // t.getToken();
-            // t.getTrack("LO423098627CN");
             return Transportation();
           });
     }
@@ -72,6 +71,7 @@ class ProductRowItem extends StatelessWidget {
               semanticLabel: 'Detail',
             ),
             onPressed: () {
+              trackingState.fetchTrackingByBarcode(package.snNumber);
               showDialog();
             },
           ),
