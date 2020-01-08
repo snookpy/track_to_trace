@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:track_to_trace/models/package.dart';
 import 'package:track_to_trace/pages/styles.dart';
+import 'package:track_to_trace/services/thaipostapi_provider.dart';
 import 'package:track_to_trace/widgets/transportation.dart';
 
 class ProductRowItem extends StatelessWidget {
@@ -17,6 +18,9 @@ class ProductRowItem extends StatelessWidget {
       showCupertinoModalPopup(
           context: context,
           builder: (_) {
+            ThaipostApiProvider t = ThaipostApiProvider();
+            // t.getToken();
+            // t.getTrack("LO423098627CN");
             return Transportation();
           });
     }
