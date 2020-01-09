@@ -7,6 +7,12 @@ A new Flutter project.
 
 Get Token from https://track.thailandpost.co.th/dashboard then store in lib/config.dart
 
+## TODOs
+
+ - Convert date formating on Transportation widgets
+ - Add date field for Package and  should order by date when fetching this data
+ - Stored token on sqlite because token has a mounth expire and change the logic of get token (now, check only token is not empty)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
