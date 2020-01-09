@@ -2,6 +2,11 @@
 
 A new Flutter project.
 
+
+## Before Development
+
+Get Token from https://track.thailandpost.co.th/dashboard then store in lib/config.dart
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
