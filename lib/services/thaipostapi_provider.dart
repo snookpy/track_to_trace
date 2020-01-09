@@ -9,6 +9,10 @@ class ThaipostApiProvider {
 
   final String baseUrl = 'https://trackapi.thailandpost.co.th/post/api/v1';
 
+  ThaipostApiProvider._();
+  
+  static final ThaipostApiProvider db = ThaipostApiProvider._();
+
   String token = "";
 
   // TODO: refactor to use Date
@@ -34,7 +38,6 @@ class ThaipostApiProvider {
     Map<String, dynamic> tokenReturn = jsonDecode(res.body);
     expDate = tokenReturn['expire'];
     token = tokenReturn['token'];
-    print(tokenReturn);
   }
 
   Future<List<Tracking>> getTrack(barcode) async {

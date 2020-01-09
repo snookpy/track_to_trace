@@ -48,9 +48,7 @@ class SqliteProvider {
 
   deletePackage(int packageId) async {
     final db = await database;
-    var res = await db.delete("Packages", where: "id = ?", whereArgs: [packageId]);
-
-    print(res);
+    await db.delete("Packages", where: "id = ?", whereArgs: [packageId]);
   }
 
   cleanPackage() async {

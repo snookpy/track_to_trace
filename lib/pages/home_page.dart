@@ -23,6 +23,7 @@ class HomePage extends StatelessWidget {
               child: CupertinoScrollbar(
                 child: ListView(
                   children: <Widget>[
+                    // spread syntax like es6 javascript
                     ...packageState.packages
                         .map(
                           (pa) => Dismissible(
