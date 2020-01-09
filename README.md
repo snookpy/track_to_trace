@@ -15,6 +15,7 @@ class Config {
 ## TODOs
 
  - Convert date formating on Transportation widgets
+ - Show some text or error message when tracking is empty or wrong barcode number on Transportation widgets
  - Add date field for Package and  should order by date when fetching this data
  - Stored token on sqlite because token has a mounth expire and change the logic of get token (now, check only token is not empty)
  - Localizations
