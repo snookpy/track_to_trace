@@ -12,6 +12,7 @@ Get Token from https://track.thailandpost.co.th/dashboard then store in lib/conf
  - Convert date formating on Transportation widgets
  - Add date field for Package and  should order by date when fetching this data
  - Stored token on sqlite because token has a mounth expire and change the logic of get token (now, check only token is not empty)
+ - Localizations
 
 ## Getting Started
 
