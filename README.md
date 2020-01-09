@@ -6,6 +6,11 @@ A new Flutter project.
 ## Before Development
 
 Get Token from https://track.thailandpost.co.th/dashboard then store in lib/config.dart
+```dart
+class Config {
+  static String thaiPostApiKey = "BeV4EvNiUISfC-BTNjBLH^UdZmR0BUPlE8F@P\$UHZXJ1BmG0O=XqO|O1N\$X*CiReLnY3UiVLP6RkV9S*GtRxFsBq";
+}
+```
 
 ## TODOs
 
